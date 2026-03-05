@@ -1,0 +1,14 @@
+# Temel alınacak Java 21 imajı
+FROM eclipse-temurin:21-jdk
+
+# Konteyner içinde çalışacağımız ana klasörü belirliyoruz
+WORKDIR /app
+
+# Senin bilgisayarındaki 'src' klasörünü, konteynerin içine kopyalıyoruz
+COPY src ./src
+
+# src klasörünün içindeki TÜM java dosyalarını derliyoruz
+RUN javac src/*.java
+
+# Programı çalıştırıyoruz (Sınıfların src klasöründe olduğunu -cp ile belirtiyoruz)
+CMD ["java", "-cp", "src", "Main"]
